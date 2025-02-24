@@ -162,34 +162,132 @@ nav ul li a:hover {
   }
 }
 
-/* About Section */
+/* About Section - Updated Cyberpunk Style */
 .about {
-  padding: 4rem 1rem;
-  text-align: center;
+  padding: 4rem 2rem;
   position: relative;
+  background: linear-gradient(145deg, #1a1a3d 0%, #3d1a3d 100%);
+  border-radius: 15px;
+  margin: 2rem;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.2),
+    0 0 40px rgba(255, 0, 255, 0.2),
+    inset 0 0 50px rgba(0, 0, 0, 0.8);
 }
 
+/* Remove the rotating animation */
+.about::after {
+  display: none;
+}
+
+/* Enhanced 3D effect for content */
 .about-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 2rem;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  box-shadow: 
+    inset 0 0 30px rgba(0, 255, 255, 0.1),
+    0 15px 25px rgba(0, 0, 0, 0.6);
 }
 
 .about-content p {
+  position: relative;
+  color: #fff;
   font-size: 1.1rem;
   line-height: 1.8;
-  text-align: left;
-  color: #fff;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 61, 0.8),
+    rgba(61, 26, 61, 0.8)
+  );
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-radius: 10px;
+  transform: translateZ(0);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    0 0 5px rgba(0, 255, 255, 0.2);
 }
 
-.about-gif {
-  width: 150px;
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+.about-content p:hover {
+  transform: translateZ(30px);
+  box-shadow: 
+    0 5px 20px rgba(0, 255, 255, 0.3),
+    0 0 15px rgba(255, 0, 255, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 61, 0.9),
+    rgba(61, 26, 61, 0.9)
+  );
+}
+
+/* Cyberpunk heading style */
+.about h2 {
+  color: transparent;
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 3rem;
+  position: relative;
+  text-shadow: 
+    2px 2px 4px rgba(0, 255, 255, 0.3),
+    -2px -2px 4px rgba(255, 0, 255, 0.3);
+}
+
+/* Neon border effect on hover */
+.about-content p::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  pointer-events: none;
+  transition: 0.5s;
+  opacity: 0;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.3),
+    0 0 30px rgba(255, 0, 255, 0.3);
+}
+
+.about-content p:hover::before {
+  opacity: 1;
+}
+
+/* Text highlight effect */
+.about-content p em {
+  font-style: normal;
+  color: #00ffff;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about {
+    margin: 1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .about h2 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  
+  .about-content p {
+    font-size: 1rem;
+    padding: 1rem;
+  }
 }
 
 /* Skills Section */
@@ -294,35 +392,59 @@ nav ul li a:hover {
 
 .project-card {
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 1.5rem;
-  border-radius: 10px;
+  padding: 2rem;
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  width: 300px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 400px;
+  min-height: 450px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.project-card h3 {
+.tech-stack {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.tech-stack i {
+  font-size: 1.8rem;
   color: #00ffff;
+  transition: transform 0.3s ease;
+}
+
+.tech-stack i:hover {
+  transform: scale(1.2);
+  color: #ff00ff;
+}
+
+.project-details {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.project-details h4 {
+  color: #00ffff;
+  margin-bottom: 0.5rem;
 }
 
 .project-card p {
-  color: #ff00ff;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 1rem 0;
 }
 
-.project-card a {
-  color: #00ffff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.project-card a:hover {
-  color: #ff00ff;
-}
-
-.project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+@media (max-width: 768px) {
+  .project-card {
+    width: 100%;
+    min-height: auto;
+  }
 }
 
 /* GitHub Section */
@@ -471,4 +593,163 @@ footer p {
     width: 100%;
     min-height: auto;
   }
+}
+
+/* =========================================================*/
+/* Card hover effects */
+.project-card, .research-card, .skill-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card::before, .research-card::before, .skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.project-card:hover::before, .research-card:hover::before, .skill-card:hover::before {
+  left: 100%;
+}
+
+.project-card:hover, .research-card:hover, .skill-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+/* Text glitch effect for headings */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+h1:hover, h2:hover {
+  animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(0, 255, 255, 0.4),
+    0 0 30px rgba(255, 0, 255, 0.6);
+}
+
+/* Skill icons rotation */
+.skill-card i {
+  transition: transform 0.6s ease;
+}
+
+.skill-card:hover i {
+  transform: rotateY(360deg);
+}
+
+/* Smooth section transitions */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*=====================================================================================*/
+
+/* About Section Animations */
+.about-content p {
+  position: relative;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.about-content p::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(to bottom, #00ffff, #ff00ff);
+  transition: height 0.6s ease;
+}
+
+.about.visible .about-content p {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about.visible .about-content p::before {
+  height: 100%;
+  top: 0;
+}
+
+/* Stagger animation delay for paragraphs */
+.about.visible .about-content p:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.about.visible .about-content p:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.about.visible .about-content p:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+/* Glowing border animation */
+.about {
+  position: relative;
+  overflow: hidden;
+}
+
+.about::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    rgba(0, 255, 255, 0.3),
+    transparent 30%
+  );
+  animation: rotateBorder 8s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about:hover::after {
+  opacity: 1;
+}
+
+@keyframes rotateBorder {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text highlight effect */
+.about-content p:hover {
+  background: linear-gradient(90deg, 
+    rgba(0, 255, 255, 0.1), 
+    rgba(255, 0, 255, 0.1)
+  );
+  transform: scale(1.02);
+  transition: all 0.3s ease;
 }
