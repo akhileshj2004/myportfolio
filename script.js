@@ -22,7 +22,7 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
 // Intersection Observer for section animations
 const sections = document.querySelectorAll('section');
 const observerOptions = {
-  threshold: 0.2,
+  threshold: 0.1,
   rootMargin: '0px'
 };
 
@@ -30,6 +30,8 @@ const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      entry.target.style.transform = 'translateY(0)';
+      entry.target.style.opacity = '1';
     }
   });
 }, observerOptions);
@@ -137,3 +139,26 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// Create random floating particles
+function createParticles(count) {
+  const particlesContainer = document.querySelector('.particles');
+  
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    // Random initial position
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.top = Math.random() * 100 + 'vh';
+    
+    // Random animation duration and delay
+    particle.style.animationDuration = (Math.random() * 15 + 5) + 's';
+    particle.style.animationDelay = Math.random() * 5 + 's';
+    
+    particlesContainer.appendChild(particle);
+  }
+}
+
+// Initialize particles
+createParticles(20);
