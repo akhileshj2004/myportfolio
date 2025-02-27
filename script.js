@@ -290,3 +290,33 @@ setInterval(() => {
       container.className === 'header-particles' ? 10 : 15);
   });
 }, 20000); // Increased to 20 seconds
+
+// Certificates section - Clone certificates for seamless infinite scroll
+document.addEventListener('DOMContentLoaded', () => {
+  const certificatesScroll = document.querySelector('.certificates-scroll');
+  if (certificatesScroll) {
+    // Clone certificates for smooth infinite scroll
+    const certificates = document.querySelectorAll('.certificate-card');
+    certificates.forEach(certificate => {
+      const clone = certificate.cloneNode(true);
+      certificatesScroll.appendChild(clone);
+    });
+
+    // Intersection Observer for animation
+    const certificatesSection = document.querySelector('.certificates');
+    const certificatesObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            certificatesScroll.style.animationPlayState = 'running';
+          } else {
+            certificatesScroll.style.animationPlayState = 'paused';
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    certificatesObserver.observe(certificatesSection);
+  }
+});

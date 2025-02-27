@@ -1693,3 +1693,125 @@ footer {
     font-size: 1.2rem;
   }
 }
+
+/* Certificates Section */
+.certificates {
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.certificates h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: transparent;
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.certificates-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+.certificates-scroll {
+  display: flex;
+  gap: 2rem;
+  animation: scrollCertificates 40s linear infinite;
+  padding: 1rem;
+}
+
+.certificates-scroll:hover {
+  animation-play-state: paused;
+}
+
+.certificate-card {
+  min-width: 300px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.certificate-card:hover {
+  transform: translateY(-10px) rotateY(10deg);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.3),
+    0 0 60px rgba(255, 0, 255, 0.2);
+}
+
+.certificate-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.certificate-card:hover img {
+  transform: scale(1.05);
+}
+
+.certificate-info {
+  padding: 1.5rem;
+}
+
+.certificate-info h3 {
+  color: #00ffff;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.certificate-info p {
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+@keyframes scrollCertificates {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-300px * 6 - 2rem * 6));
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .certificates h2 {
+    font-size: 2rem;
+  }
+
+  .certificate-card {
+    min-width: 250px;
+  }
+
+  .certificate-info h3 {
+    font-size: 1rem;
+  }
+
+  .certificate-info p {
+    font-size: 0.8rem;
+  }
+
+  @keyframes scrollCertificates {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-250px * 6 - 2rem * 6));
+    }
+  }
+}
