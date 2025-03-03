@@ -115,6 +115,7 @@ skillCards.forEach(card => {
 });
 
 // Typing effect for hero description
+/*
 const heroDescription = document.querySelector('.hero-description');
 if (heroDescription) {
   const text = heroDescription.innerHTML;
@@ -138,6 +139,7 @@ if (heroDescription) {
   
   heroObserver.observe(document.querySelector('.hero'));
 }
+*/
 
 //======================================================================================
 // About section animation handler
