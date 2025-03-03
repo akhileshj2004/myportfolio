@@ -1914,3 +1914,73 @@ footer {
     align-items: center;
   }
 }
+
+/* Neon Resume Button */
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #00ffff;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  border: 2px solid #00ffff;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  box-shadow: 
+    0 0 5px #00ffff,
+    0 0 15px rgba(0, 255, 255, 0.5),
+    inset 0 0 5px rgba(0, 255, 255, 0.2);
+  text-shadow: 0 0 5px #00ffff;
+  animation: neonPulse 2s infinite alternate;
+}
+
+.resume-btn:hover {
+  background: rgba(0, 255, 255, 0.1);
+  color: #fff;
+  box-shadow: 
+    0 0 10px #00ffff,
+    0 0 30px #00ffff,
+    0 0 50px rgba(0, 255, 255, 0.5),
+    inset 0 0 10px rgba(0, 255, 255, 0.3);
+  text-shadow: 0 0 8px #fff;
+  transform: translateY(-3px);
+}
+
+.resume-btn i {
+  font-size: 1.2rem;
+  animation: downloadPulse 1.5s infinite alternate;
+}
+
+@keyframes neonPulse {
+  0% {
+    box-shadow: 
+      0 0 5px #00ffff,
+      0 0 15px rgba(0, 255, 255, 0.5);
+    text-shadow: 0 0 5px #00ffff;
+  }
+  100% {
+    box-shadow: 
+      0 0 10px #00ffff,
+      0 0 25px #00ffff,
+      0 0 35px rgba(0, 255, 255, 0.5);
+    text-shadow: 0 0 8px #00ffff;
+  }
+}
+
+@keyframes downloadPulse {
+  0% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(3px);
+    opacity: 1;
+  }
+}
