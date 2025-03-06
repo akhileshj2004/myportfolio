@@ -228,19 +228,20 @@ nav a.active {
 
 /* Blog Container */
 .blog-container {
-  max-width: 1000px;
+  max-width: 1400px; /* Increased from 1000px */
   margin: 4rem auto;
   padding: 0 2rem;
 }
 
+/* Change the blog post layout to be more landscape-oriented */
 .blog-post {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 2rem;
+  grid-template-columns: 100px 1fr; /* Slightly wider date column */
+  gap: 3rem;
   margin-bottom: 5rem;
   background: rgba(0, 0, 0, 0.3);
   border-radius: 15px;
-  padding: 2rem;
+  padding: 2.5rem 3rem; /* Increased horizontal padding */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 255, 255, 0.1);
   position: relative;
@@ -271,6 +272,22 @@ nav a.active {
     0 15px 40px rgba(0, 0, 0, 0.4),
     0 0 20px rgba(0, 255, 255, 0.2);
   border-color: rgba(0, 255, 255, 0.2);
+}
+
+/* Add subtle visual separation between articles */
+.blog-post::after {
+  content: '';
+  position: absolute;
+  bottom: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 255, 255, 0.3), 
+    rgba(255, 0, 255, 0.3), 
+    transparent);
 }
 
 .post-date {
@@ -324,21 +341,24 @@ nav a.active {
   letter-spacing: 1px;
 }
 
+/* Enhanced post title for landscape layout */
 .post-content h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  font-size: 2.2rem; /* Larger title */
+  margin-bottom: 1.2rem;
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--primary-cyan);
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
+/* Update post meta for landscape layout */
 .post-meta {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
   font-size: 0.9rem;
   color: var(--text-secondary);
+  justify-content: flex-start;
 }
 
 .post-meta span {
@@ -347,7 +367,12 @@ nav a.active {
   gap: 0.5rem;
 }
 
+/* Enhance the post text layout for landscape orientation */
 .post-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two-column layout for content */
+  gap: 2.5rem;
+  column-gap: 4rem;
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 1.1rem;
@@ -358,15 +383,29 @@ nav a.active {
   margin-bottom: 1.5rem;
 }
 
+/* Style the first paragraph to span both columns */
+.post-text p:first-of-type {
+  grid-column: 1 / -1;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+/* Make headings span both columns */
 .post-text h3 {
+  grid-column: 1 / -1;
   font-size: 1.4rem;
-  margin: 2rem 0 1rem;
+  margin: 1.5rem 0 1rem;
   color: var(--primary-magenta);
   font-family: var(--font-heading);
   font-weight: 600;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.2);
+  padding-bottom: 0.5rem;
 }
 
 .source-link {
+  grid-column: 1 / -1;
   margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -386,6 +425,13 @@ nav a.active {
 .source-link a:hover {
   color: var(--primary-magenta);
   text-decoration: underline;
+}
+
+/* Make the download button span both columns */
+.download-container {
+  grid-column: 1 / -1;
+  margin: 2rem 0;
+  text-align: center;
 }
 
 /* Newsletter Section */
@@ -458,6 +504,39 @@ nav a.active {
 .newsletter-form button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Download Button Styling */
+.download-container {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.download-button {
+  background: linear-gradient(45deg, var(--primary-cyan), var(--primary-magenta));
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.download-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.download-button i {
+  font-size: 1.2rem;
 }
 
 /* Footer */
@@ -562,6 +641,11 @@ footer {
     flex-direction: column;
   }
   
+  .download-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -594,6 +678,20 @@ footer {
   
   .post-text {
     font-size: 1rem;
+  }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+  .post-text {
+    grid-template-columns: 1fr;
+  }
+  
+  .post-text p:first-of-type,
+  .post-text h3,
+  .source-link,
+  .download-container {
+    grid-column: 1;
   }
 }
 
